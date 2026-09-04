@@ -1,0 +1,530 @@
+<!doctype html>
+<html data-theme="light" lang="ru"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Unit 1. English for Professional Communicators – книга для студента</title><meta content="Workbook к Unit 1: тексты, упражнения, дополнительная практика лексики и грамматики." name="description"/><style>
+:root{
+  --paper:#FDFCF9; --surface:#FFFFFF; --ink:#1C201C; --deep:#143D30; --mid:#2E6B54;
+  --accent:#A9762A; --clay:#A03D22; --slate:#5A6660; --rule:#D8D4CB; --hair:#EAE6DD;
+  --band:#F0EEE7; --shadow:0 1px 2px rgba(20,30,25,.05),0 8px 28px rgba(20,30,25,.06);
+  --tint-key:#EEF3EF; --tint-note:#F5F3ED; --tint-disc:#FBF3E4; --tint-warn:#F9EDE8;
+  --bar-key:#2E6B54; --bar-note:#5A6660; --bar-disc:#A9762A; --bar-warn:#A03D22;
+  --sans:"Inter","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --serif:Georgia,"Iowan Old Style","Palatino Linotype",Palatino,"Times New Roman",serif;
+  --fs:17px; --maxw:74ch;
+}
+:root[data-theme="dark"]{
+  --paper:#15181A; --surface:#1B1F21; --ink:#E7E4DC; --deep:#94C7AE; --mid:#7FB79E;
+  --accent:#D9A961; --clay:#DE9376; --slate:#9BA6A1; --rule:#333B38; --hair:#2A312F;
+  --band:#1F2426; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35);
+  --tint-key:#18241E; --tint-note:#1F2320; --tint-disc:#26200F; --tint-warn:#271812;
+  --bar-key:#5FA083; --bar-note:#7C877F; --bar-disc:#D9A961; --bar-warn:#DE9376;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--paper);color:var(--ink);font:var(--fs)/1.65 var(--serif);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+
+/* ---------- progress ---------- */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:60;transition:width .12s linear}
+
+/* ---------- topbar ---------- */
+#topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--hair)}
+.tb-in{display:flex;align-items:center;gap:.75rem;padding:.55rem 1.1rem;max-width:1500px;margin:0 auto}
+.tb-brand{font:600 .78rem/1 var(--sans);letter-spacing:.13em;text-transform:uppercase;color:var(--slate);white-space:nowrap}
+.tb-brand b{color:var(--deep)}
+.tb-spacer{flex:1}
+.tb-search{position:relative;display:flex;align-items:center}
+.tb-search input{font:.86rem/1 var(--sans);padding:.46rem .7rem .46rem 1.9rem;width:16rem;max-width:38vw;
+  border:1px solid var(--rule);border-radius:999px;background:var(--surface);color:var(--ink);outline:none}
+.tb-search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}
+.tb-search svg{position:absolute;left:.62rem;width:.85rem;height:.85rem;stroke:var(--slate);fill:none;stroke-width:2}
+.tb-count{font:.72rem/1 var(--sans);color:var(--slate);min-width:4.6rem;text-align:right}
+.btn{font:600 .74rem/1 var(--sans);letter-spacing:.05em;padding:.46rem .68rem;border:1px solid var(--rule);
+  border-radius:7px;background:var(--surface);color:var(--slate);cursor:pointer;white-space:nowrap;transition:.15s}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn[aria-pressed="true"]{background:var(--deep);border-color:var(--deep);color:#fff}
+:root[data-theme="dark"] .btn[aria-pressed="true"]{color:#10201A}
+.btn.icon{padding:.44rem .55rem;font-size:.9rem;line-height:0}
+.btn.icon svg{display:block}
+.btn.icon#t-font{line-height:1;font-family:var(--serif);font-weight:700}
+#menu-btn{display:none}
+
+/* ---------- layout ---------- */
+.wrap{display:grid;grid-template-columns:19rem minmax(0,1fr);gap:0;max-width:1500px;margin:0 auto}
+#sidebar{position:sticky;top:52px;align-self:start;height:calc(100vh - 52px);overflow-y:auto;
+  padding:1.5rem 1rem 3rem 1.3rem;border-right:1px solid var(--hair);scrollbar-width:thin}
+#sidebar h2{font:600 .7rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 .9rem}
+#nav a{display:block;font:.82rem/1.35 var(--sans);color:var(--slate);text-decoration:none;
+  padding:.3rem .55rem;border-left:2px solid transparent;border-radius:0 4px 4px 0;transition:.12s}
+#nav a:hover{color:var(--ink);background:var(--band)}
+#nav a.lvl1{font-weight:650;color:var(--ink);margin-top:.7rem;font-size:.83rem}
+#nav a.lvl2{padding-left:1.25rem}
+#nav a.active{color:var(--accent);border-left-color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent)}
+#nav a.hidden{display:none}
+main{padding:2.4rem 3.2rem 6rem;min-width:0}
+article{max-width:var(--maxw);margin:0 auto}
+
+/* ---------- cover ---------- */
+.cover{max-width:var(--maxw);margin:0 auto 4rem}
+.cover-band{background:var(--deep);color:#fff;padding:1.5rem 1.6rem;text-align:center;border-radius:3px}
+:root[data-theme="dark"] .cover-band{background:#10241C}
+.cover-series{font:700 .72rem/1.5 var(--sans);letter-spacing:.2em;text-transform:uppercase}
+.cover-fields{font:.78rem/1.6 var(--sans);letter-spacing:.09em;color:#BFD3C8;margin-top:.35rem}
+.cover-main{text-align:center;padding:3.4rem 0 0}
+.cover-title{font:700 2.9rem/1.08 var(--serif);color:var(--ink);margin:0 0 .3rem;letter-spacing:-.01em}
+.cover-title span{display:block;font-weight:400;font-style:italic;font-size:1.85rem;color:var(--mid);margin-top:.35rem}
+.cover-tagline{font:.9rem/1.6 var(--sans);color:var(--slate);letter-spacing:.03em;margin:1.5rem 0 2.4rem}
+.cover-rule{height:2px;background:var(--accent);margin:0 auto;width:100%}
+.cover-unitno{font:700 .78rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin:1.8rem 0 .6rem}
+.cover-unit{font:700 1.75rem/1.2 var(--serif);color:var(--deep);margin:0 0 1.8rem}
+.cover-meta{margin:2.6rem 0 0;background:var(--band);padding:1.5rem 1.7rem;text-align:left;border-radius:3px}
+.cover-meta>div{display:grid;grid-template-columns:8.5rem 1fr;gap:.6rem;padding:.35rem 0}
+.cover-meta dt{font:700 .68rem/1.6 var(--sans);letter-spacing:.13em;text-transform:uppercase;color:var(--accent)}
+.cover-meta dd{margin:0;font-size:.95rem}
+
+/* ---------- headings ---------- */
+.section{margin-top:4.5rem}
+h2.h1{font:700 2.1rem/1.15 var(--serif);color:var(--deep);margin:0 0 1.6rem;padding-bottom:.7rem;
+  border-bottom:2px solid var(--accent);letter-spacing:-.01em}
+h3.h2{font:700 1.42rem/1.3 var(--serif);color:var(--deep);margin:3rem 0 1rem;padding-top:1rem;border-top:1px solid var(--rule)}
+h3.h2 .num{color:var(--accent);margin-right:.55rem;font-variant-numeric:tabular-nums}
+h4.h3{font:700 1.08rem/1.35 var(--serif);color:var(--mid);margin:2rem 0 .6rem}
+.kicker{font:700 .7rem/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 .7rem}
+
+/* ---------- opener ---------- */
+.opener{margin:5.5rem 0 3rem;padding-top:1rem}
+.opener-num{font:700 7.5rem/.85 var(--serif);color:color-mix(in srgb,var(--deep) 20%,transparent);margin:0 0 .5rem;letter-spacing:-.04em}
+.opener-title{font:700 2.5rem/1.08 var(--serif);color:var(--deep);margin:0 0 .25rem;letter-spacing:-.01em}
+.opener-en{font:italic 1.22rem/1.3 var(--serif);color:var(--slate);margin:0 0 1rem}
+.opener-rule{height:2px;background:var(--accent);margin:0 0 1.5rem}
+.opener-lead{font-size:1.09rem;line-height:1.68;margin:0 0 1.7rem}
+.opener-key{margin:0 0 1.8rem;padding:1.15rem 1.4rem;background:var(--band);border-radius:3px}
+.opener-key p:last-child{font:italic 1.12rem/1.5 var(--serif);color:var(--deep);margin:0}
+
+/* ---------- text ---------- */
+p{margin:0 0 .85rem;text-align:justify;hyphens:auto}
+p.center{text-align:center}
+p.ind{margin-left:1.3rem}
+.lead{font-size:1.08rem;line-height:1.7;color:var(--slate);font-style:italic;margin-bottom:1.6rem}
+.sidenote{font-size:.86rem;line-height:1.6;color:var(--slate);font-style:italic;
+  border-left:3px solid var(--rule);padding:.15rem 0 .15rem .9rem;margin:1rem 0 1.2rem}
+strong{font-weight:700;color:var(--ink)}
+em{font-style:italic}
+ul.dash,ol.nums{margin:.2rem 0 .9rem;padding-left:1.5rem}
+ul.dash{list-style:none;padding-left:1.35rem}
+ul.dash li{position:relative;margin:0 0 .42rem;text-align:justify}
+ul.dash li::before{content:"–";position:absolute;left:-1.35rem;color:var(--accent)}
+ol.nums li{margin:0 0 .42rem;text-align:justify}
+ol.nums li::marker{color:var(--accent);font-weight:700}
+blockquote.src{margin:0 0 .9rem;padding:.1rem 0 .1rem 1.1rem;border-left:3px solid var(--rule);hyphens:auto;
+  font-size:.95rem;line-height:1.62;color:color-mix(in srgb,var(--ink) 85%,var(--slate));text-align:justify}
+
+/* ---------- tables ---------- */
+.tw{overflow-x:auto;margin:1.1rem 0 1.5rem;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+thead th{font:700 .67rem/1.4 var(--sans);letter-spacing:.13em;text-transform:uppercase;color:var(--accent);
+  text-align:left;padding:.6rem .9rem .6rem 0;border-bottom:1px solid var(--ink);vertical-align:bottom}
+tbody td{padding:.62rem .9rem .62rem 0;border-bottom:1px solid var(--hair);vertical-align:top;line-height:1.5}
+tbody tr:last-child td{border-bottom:none}
+td p{margin:0 0 .3rem;text-align:left}
+td p:last-child{margin:0}
+td.ans{color:var(--deep)}
+:root[data-theme="dark"] td.ans{color:var(--deep)}
+
+/* ---------- boxes ---------- */
+.box{margin:1.4rem 0 1.6rem;border-radius:4px;border-top:3px solid var(--bar-note);
+  background:var(--tint-note);overflow:hidden;box-shadow:var(--shadow)}
+.box-key{border-top-color:var(--bar-key);background:var(--tint-key)}
+.box-note{border-top-color:var(--bar-note);background:var(--tint-note)}
+.box-disc{border-top-color:var(--bar-disc);background:var(--tint-disc)}
+.box-warn{border-top-color:var(--bar-warn);background:var(--tint-warn)}
+.box-head{display:flex;align-items:center;gap:.55rem;width:100%;padding:.72rem 1.15rem .55rem;
+  background:none;border:0;cursor:pointer;text-align:left;font:inherit}
+.box-head.static{cursor:default}
+.box-icon{font:.78rem/1 var(--sans);width:1.25rem;height:1.25rem;display:grid;place-items:center;
+  border-radius:50%;color:#fff;background:var(--bar-note);flex:none}
+.box-key .box-icon{background:var(--bar-key)}
+.box-disc .box-icon{background:var(--bar-disc)}
+.box-warn .box-icon{background:var(--bar-warn)}
+:root[data-theme="dark"] .box-icon{color:#121614}
+.box-label{font:700 .69rem/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--bar-note)}
+.box-key .box-label{color:var(--bar-key)} .box-disc .box-label{color:var(--bar-disc)} .box-warn .box-label{color:var(--bar-warn)}
+.box-chev{margin-left:auto;width:.5rem;height:.5rem;border-right:1.5px solid var(--slate);
+  border-bottom:1.5px solid var(--slate);transform:rotate(45deg);transition:transform .2s;flex:none}
+.box-head[aria-expanded="false"] .box-chev{transform:rotate(-45deg)}
+.box-body{padding:0 1.35rem 1rem;font-size:.94rem}
+.box-body>*:last-child{margin-bottom:0}
+.box-body .tw{margin:.8rem 0 .6rem}
+.box.collapsed .box-body{display:none}
+.legend{margin:1.2rem 0 1.5rem}
+.legend .box{margin:.6rem 0}
+
+/* ---------- auto toc ---------- */
+.auto-toc{columns:2;column-gap:2.5rem;margin:1.2rem 0 0}
+.auto-toc a{display:block;break-inside:avoid;text-decoration:none;color:var(--ink);
+  font:.9rem/1.45 var(--sans);padding:.28rem 0;border-bottom:1px dotted var(--hair)}
+.auto-toc a.t1{font-weight:700;color:var(--deep);margin-top:.7rem}
+.auto-toc a.t2{padding-left:1rem;color:var(--slate);font-size:.84rem}
+.auto-toc a:hover{color:var(--accent)}
+
+/* ---------- search ---------- */
+mark{background:color-mix(in srgb,var(--accent) 32%,transparent);color:inherit;padding:0 .1em;border-radius:2px}
+mark.cur{background:var(--accent);color:#fff}
+:root[data-theme="dark"] mark.cur{color:#151A18}
+body.hide-key .box-key,body.hide-note .box-note,body.hide-disc .box-disc{display:none}
+
+/* ---------- fab ---------- */
+#totop{position:fixed;right:1.5rem;bottom:1.5rem;width:2.6rem;height:2.6rem;border-radius:50%;
+  border:1px solid var(--rule);background:var(--surface);color:var(--slate);cursor:pointer;
+  box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.2s;z-index:40;font-size:1rem}
+#totop.on{opacity:1;pointer-events:auto}
+#totop:hover{color:var(--accent);border-color:var(--accent)}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .wrap{grid-template-columns:1fr}
+  #menu-btn{display:inline-block}
+  #sidebar{position:fixed;top:52px;left:0;width:19rem;background:var(--paper);z-index:45;
+    transform:translateX(-102%);transition:transform .22s;box-shadow:var(--shadow)}
+  #sidebar.open{transform:none}
+  main{padding:2rem 1.4rem 5rem}
+  .tb-search input{width:9.5rem}
+}
+@media (max-width:820px){
+  #t-note,#t-disc,#t-collapse,#t-font{display:none}
+}
+@media (max-width:640px){
+  :root{--fs:16px}
+  .tb-in{gap:.45rem;padding:.5rem .7rem}
+  .tb-search{flex:1}
+  .tb-search input{width:100%;max-width:none}
+  .tb-spacer{display:none}
+  .cover-title{font-size:2.1rem} .opener-title{font-size:1.9rem} .opener-num{font-size:5rem}
+  h2.h1{font-size:1.7rem} h3.h2{font-size:1.22rem}
+  .auto-toc{columns:1}
+  .tb-brand,.tb-count{display:none}
+  p,li,blockquote.src{text-align:left}
+}
+
+/* ---------- print ---------- */
+@media print{
+  #topbar,#sidebar,#totop,#progress{display:none!important}
+  .wrap{display:block}
+  main{padding:0}
+  article{max-width:none}
+  body{font-size:10.5pt;background:#fff}
+  .box{break-inside:avoid;box-shadow:none;border:1px solid #ccc}
+  .opener{break-before:page}
+  .section{break-before:page}
+  h3.h2,h4.h3{break-after:avoid}
+  .tw{overflow:visible}
+  tr{break-inside:avoid}
+  a{color:inherit;text-decoration:none}
+}
+
+/* ---------- Unit 1 additions ---------- */
+.exercise{margin:2.6rem 0 3.2rem;padding-top:.2rem}
+.exercise>.h2{margin-top:0}
+.exercise-text{font-size:1rem}
+.added-tag{display:inline-block;font:700 .65rem/1 var(--sans);letter-spacing:.13em;text-transform:uppercase;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 55%,var(--rule));border-radius:999px;padding:.28rem .55rem;margin:0 0 .75rem}
+.correction-list li{margin-bottom:.55rem}
+.figure{margin:1.5rem auto 2rem;text-align:center}
+.figure img{max-width:100%;height:auto;border:1px solid var(--rule);background:#fff;padding:.5rem;box-shadow:var(--shadow)}
+.figure figcaption{font:.76rem/1.45 var(--sans);color:var(--slate);margin-top:.55rem}
+.prompt-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;margin:.8rem 0}
+.prompt-card{border:1px solid var(--hair);background:var(--surface);padding:.85rem 1rem;border-radius:4px}
+.prompt-card strong{display:block;color:var(--deep);margin-bottom:.25rem}
+.teacher-added{border-left:3px solid var(--accent);padding-left:1rem}
+.mini-key{font-family:var(--sans);font-size:.9rem;color:var(--deep)}
+.task-label{font:700 .72rem/1.4 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.35rem}
+@media(max-width:640px){.prompt-grid{grid-template-columns:1fr}}
+
+/* communication model + interleaved vocabulary practice */
+.comm-model{margin:1.5rem 0 1.8rem;padding:1rem;background:var(--surface);border:1px solid var(--hair);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
+.comm-model svg{display:block;width:100%;height:auto}
+.comm-model figcaption{font:.84rem/1.55 var(--sans);color:var(--slate);margin:.75rem .35rem .1rem;text-align:center}
+.comm-model .cm-kicker{font:700 18px var(--sans);letter-spacing:2px;fill:#A9762A}
+.comm-model .cm-sub{font:15px var(--sans);fill:#5A6660}
+.comm-model .cm-card-title{font:700 20px var(--sans);letter-spacing:1px;fill:#143D30}
+.comm-model .cm-card-title.light,.comm-model .cm-card-sub.light{fill:#fff}
+.comm-model .cm-card-sub{font:14px var(--sans);fill:#5A6660}
+.comm-model .cm-small-title{font:700 14px var(--sans);letter-spacing:1px;fill:#2E6B54}
+.comm-model .cm-small-title.warn{fill:#A03D22}
+.comm-model .cm-foot{font:italic 14px Georgia,serif;fill:#5A6660}
+.vocab-boost{margin:2.2rem 0;padding:1.15rem 1.3rem 1.3rem;border-left:4px solid var(--accent);background:color-mix(in srgb,var(--accent) 6%,var(--surface));border-radius:4px}
+.vocab-boost h3.h2{margin-top:0;border-top:0;padding-top:0}
+.vocab-target{font:.82rem/1.5 var(--sans);color:var(--slate);background:var(--surface);border:1px solid var(--hair);border-radius:6px;padding:.65rem .8rem;margin:.7rem 0 1rem}
+</style></head><body>
+<div id="progress"></div>
+<div id="topbar"><div class="tb-in"><button aria-label="Оглавление" class="btn icon" id="menu-btn" title="Оглавление">☰</button><div class="tb-brand"><b>Unit 1</b> · English for Professional Communicators</div><div class="tb-spacer"></div><div class="tb-search"><svg viewbox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><input autocomplete="off" id="q" placeholder="Поиск по пособию  ( / )" spellcheck="false" type="search"/></div><div class="tb-count" id="qcount"></div><button class="btn icon" id="t-font" title="Размер шрифта">A</button><button aria-label="Тема" class="btn icon" id="t-theme" title="Тёмная тема"><svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"></path></svg></button><button aria-label="Печать" class="btn icon" id="t-print" title="Печать / PDF"><svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M6 9V3h12v6M6 18H4v-7h16v7h-2M8 14h8v7H8z"></path></svg></button></div></div>
+<div class="wrap"><aside id="sidebar"><h2>Содержание</h2><div id="nav"></div></aside><main><article id="doc">
+<header class="cover" id="top">
+<div class="cover-band">
+<div class="cover-series">English for Professional Communicators</div>
+<div class="cover-fields">Коммуникация · Профессиональное общение · Знакомство и самопрезентация</div>
+</div>
+<div class="cover-main">
+<h1 class="cover-title">WORKBOOK<span>для студента</span></h1>
+<p class="cover-tagline">Полный материал Unit 1 · Лексика · Грамматика · Фонетика · Речевая практика</p>
+<div class="cover-rule"></div>
+<p class="cover-unitno">Unit 1</p>
+<p class="cover-unit">Model of Communication &amp; Introductions</p>
+<div class="cover-rule"></div>
+<dl class="cover-meta">
+<div><dt>Фокус</dt><dd>модель коммуникации; знакомство и рассказ о себе и семье</dd></div>
+<div><dt>Фонетика</dt><dd>артикуляционная база; гласные и согласные; нисходящая шкала</dd></div>
+<div><dt>Грамматика</dt><dd>число существительных, артикль, местоимения, to be / to have, Present/Past/Perfect forms</dd></div>
+<div><dt>Добавлено</dt><dd>дополнительные упражнения для поэтапной отработки и закрепления лексики и грамматики</dd></div>
+</dl>
+</div>
+</header>
+<section class="section" id="содержание"><h2 class="h1">Содержание</h2><div class="auto-toc" id="auto-toc"></div></section>
+
+<section class="section" id="unit-overview"><h2 class="h1">Unit 1. Содержание и языковой фокус</h2><p><strong>Тема:</strong> модель коммуникации.</p><p><strong>Фонетика:</strong> артикуляционная база английского языка. Гласные и согласные. Основная интонационная шкала.</p><p><strong>Грамматика:</strong> единственное и множественное число существительных. Артикль. Количественные числительные. Личные и притяжательные местоимения. Спряжение глаголов to be, to have. Времена Present Simple, Past Simple, Present Perfect, Present Perfect Continuous.</p><p><strong>Разговорная тема:</strong> знакомство, рассказ о себе и семье.</p></section><section class="section" id="phonetics-articulation"><h2 class="h1">Фонетическая справка</h2><h3 class="h2">Английская артикуляционная база</h3><p class="lead">Английская артикуляционная база, то есть особый уклад органов речи, определяющий произношение всех звуков, имеет следующие особенности. Язык лежит плоско, слегка отодвинут от нижних зубов и почти никогда их не касается. Кончик языка слегка загнут кверху. Средняя часть языка не поднимается к нёбу. Губы в основном нейтральны или слегка растянуты в полуулыбке. Губы никогда не выпячиваются вперёд. В русском языке кончик языка почти всегда упирается в нижние или верхние зубы, а губы слегка округлены и выпячиваются вперёд.</p><section class="exercise" id="ex-0-1-8"><h3 class="h2"><span class="num">1.</span> Запомните транскрипцию следующих слов. Произнесите их, соблюдая особенности артикуляционной базы английского языка:</h3><h4 class="h3">Гласные</h4><div class="tw"><table><thead><tr><th>see</th><th>/iː/</th><th>fur</th><th>/ɜː/</th></tr></thead><tbody><tr><td>sit</td><td>/ɪ/</td><td>ago</td><td>/ ə /</td></tr><tr><td>ten</td><td>/ e /</td><td>page</td><td>/eɪ/</td></tr><tr><td>hat</td><td>/ æ /</td><td>home</td><td>/əʊ/</td></tr><tr><td>arm</td><td>/ɑː/</td><td>five</td><td>/aɪ/</td></tr><tr><td>got</td><td>/ɒ/</td><td>now</td><td>/aʊ/</td></tr><tr><td>saw</td><td>/ɔː/</td><td>boy</td><td>/ɔɪ/</td></tr><tr><td>put</td><td>/ʊ/</td><td>near</td><td>/ɪə/</td></tr><tr><td>too</td><td>/uː/</td><td>hair</td><td>/eə/</td></tr><tr><td>cup</td><td>/ ʌ /</td><td>pure</td><td>/jʊə/</td></tr></tbody></table></div><h4 class="h3">Согласные</h4><div class="tw"><table><thead><tr><th>pen</th><th>/ p /</th><th>so</th><th>/ s /</th></tr></thead><tbody><tr><td>bad</td><td>/ b /</td><td>zoo</td><td>/ z /</td></tr><tr><td>tea</td><td>/ t /</td><td>she</td><td>/ ʃ /</td></tr><tr><td>do</td><td>/ d /</td><td>vision</td><td>/ ʒ /</td></tr><tr><td>cat</td><td>/ k /</td><td>how</td><td>/ h /</td></tr><tr><td>got</td><td>/ g /</td><td>man</td><td>/ m /</td></tr><tr><td>chin</td><td>/ tʃ /</td><td>no</td><td>/ n /</td></tr><tr><td>June</td><td>/ dʒ /</td><td>sing</td><td>/ ŋ /</td></tr><tr><td>fall</td><td>/ f /</td><td>leg</td><td>/ l /</td></tr><tr><td>voice</td><td>/ v /</td><td>red</td><td>/ r /</td></tr><tr><td>thin</td><td>/ θ /</td><td>yes</td><td>/ j /</td></tr><tr><td>then</td><td>/ ð /</td><td>wet</td><td>/ w /</td></tr></tbody></table></div></section></section><section class="section" id="text-1-model-of-communication"><h2 class="h1">Text 1. Model of Communication</h2><p>We begin our study of communication with its definition and important components. Communication is a process of exchange of information between two or more participants (communicators). One participant (source) sends a message and the other participant (receiver) receives it. The source encodes a message and the receiver decodes it. Feedback refers to messages or information which the receiver sends back to the source.</p><p>Messages are verbal when we speak, write, listen or read, and nonverbal when we gesture, shake hands, smile or cry. The house we live in and the car we drive also communicate.</p><p>The messages pass through the communication channel, for example, vocal/auditory, or gestural/visual. TV, radio, newspaper, the Internet are technical communication channels.</p><p>Communication always takes place within a context. The room or park where communication occurs is the physical context, the cultural traditions, the social relationships among the participants form the social-psychological context. The temporal context includes the time of the day (morning, afternoon, evening, night) and the time in history in which the communication takes place. They influence the content and the form of messages.</p><p>Communication is effective if participants have the same experiences. The mother sometimes has difficulty communicating with her children because the experience of her daughter or son is different. She makes an effort to understand him or her.</p><p>Communication always has some effects on communicators. It changes their knowledge, attitude or behaviour. If noise is present in a communication system, communication is not effective. If I have lisping or my handwriting is poor, communication is not effective because of physical noise. If you have biases and prejudices, it is psychological noise. If a man has difficulty when communicating with a foreigner because he does not speak his or her language it is semantic noise.</p></section><section class="section" id="language-study-text-1"><h2 class="h1">Language Study – Text 1</h2><section class="exercise" id="ex-1-1-24"><h3 class="h2"><span class="num">1.</span> Найдите в тексте 1 английские эквиваленты следующих словосочетаний:</h3><p>получать сообщение, процесс обмена информацией, посылать сообщение, начинать исследование, коммуникационные каналы, вербальные/невербальные сообщения, временной контекст, кодировать/декодировать информацию, сделать усилие, общественные отношения, влиять на содержание, изменить отношение.</p></section><section class="exercise" id="ex-1-2-42"><h3 class="h2"><span class="num">2.</span> Переведите на русский язык следующие словосочетания:</h3><p>communication system, psychological noise, to speak the language, semantic noise, effective communication, to have difficulty, poor handwriting, to change behaviour, to have effects, the same experience, to make an effort, to influence the form of messages, to shake hands</p></section><section class="exercise" id="ex-1-3-61"><h3 class="h2"><span class="num">3.</span> Найдите в тексте 1 все словосочетания со словами communication, message, context, noise и дайте их русские эквиваленты.</h3></section><section class="exercise vocab-boost" id="vf-1-process"><h3 class="h2">Vocabulary Focus 1. Building the communication model</h3><div class="vocab-target"><strong>Целевая лексика:</strong> <em>source, receiver, encode, decode, feedback, message, channel, context, noise</em></div><p><strong>Задание.</strong> Заполните пропуски словами из списка. Каждое слово используйте один раз.</p><ol class="nums"><li>The ______ sends information to another participant.</li><li>The ______ interprets the information.</li><li>Before sending information, the source must ______ the message.</li><li>The receiver must ______ it.</li><li>A reply sent back to the source is called ______.</li><li>The medium through which a message travels is a ______.</li><li>Physical, psychological and semantic interference is called ______.</li><li>Communication always takes place within a ______.</li></ol></section><section class="exercise" id="ex-1-4-97"><h3 class="h2"><span class="num">4.</span> Заполните пропуски в таблице формами личных местоимений и притяжательных прилагательных (my, your, his и т. д.).</h3><div class="tw"><table><thead><tr><th>Личные местоимения</th><th>Личные местоимения</th><th>Личные местоимения</th><th>Притяжательные прилагательные</th></tr></thead><tbody><tr><td></td><td>Именительный падеж</td><td>Объектный падеж</td><td></td></tr><tr><td>1 л.</td><td>I</td><td>me</td><td>__________</td></tr><tr><td>2 л.</td><td>you</td><td>you</td><td>__________</td></tr><tr><td>3 л.</td><td>he, she</td><td>him, her</td><td>__________</td></tr><tr><td></td><td>it</td><td>it</td><td>__________</td></tr><tr><td>1 л.</td><td>we</td><td>us</td><td>__________</td></tr><tr><td>2 л.</td><td>you</td><td>you</td><td>__________</td></tr><tr><td>3 л.</td><td>they</td><td>them</td><td>__________</td></tr></tbody></table></div></section><section class="exercise" id="ex-1-5-102"><h3 class="h2"><span class="num">5.</span> Найдите в словаре следующие глаголы и укажите предлоги, с которыми они могут быть употреблены, если они имеются: to include, to communicate, to influence, to speak, to listen, to tell, to help, to send. Сравните их с русскими эквивалентами и запомните разницу в предложном управлении.</h3></section><section class="exercise vocab-boost" id="vf-2-patterns"><h3 class="h2">Vocabulary Focus 2. Verb patterns in use</h3><div class="vocab-target"><strong>Целевая лексика:</strong> <em>communicate with, speak to/with, listen to, tell somebody about, influence somebody/something, help somebody with, send something to somebody</em></div><p><strong>Задание.</strong> Исправьте ошибки в управлении глаголов. В некоторых предложениях ошибки нет.</p><ol class="nums"><li>Good managers listen their employees carefully.</li><li>Social media can influence on professional reputation.</li><li>Please tell to your partner about the misunderstanding.</li><li>She communicated with the client about the new schedule.</li><li>Can you help to me with this report?</li><li>We sent the revised message to all participants.</li></ol></section><section class="exercise" id="ex-1-6-116"><h3 class="h2"><span class="num">6.</span> Выпишите из текста урока существительные во множественном числе и разделите их на три группы в зависимости от конечного звука. Например:</h3><div class="tw"><table><thead><tr><th>/s/</th><th>/z/</th><th>/ɪz/</th></tr></thead><tbody><tr><td>components</td><td>hands</td><td>messages</td></tr></tbody></table></div></section><section class="exercise" id="ex-1-7-126"><h3 class="h2"><span class="num">7.</span> Образуйте форму множественного числа следующих существительных:</h3><div class="tw"><table><thead><tr><th>channel, effect, interaction, noise, context, form, language, attitude, participant, source, place, process, communicator, strategy, interpretation, meaning</th></tr></thead><tbody></tbody></table></div></section><section class="exercise" id="ex-1-8-148"><h3 class="h2"><span class="num">8.</span> Переведите на английский язык следующие словосочетания:</h3><p>мое сообщение, их отношение, ее поведение, наше знание, их сообщения, ваши каналы, ее (системы) компоненты, наши участники, твоя система, их шум, ее место, их отношения, наше общение, его язык, твой предмет изучения, их (каналов) возникновение, моя информация</p></section><section class="exercise vocab-boost" id="vf-3-collocations"><h3 class="h2">Vocabulary Focus 3. Collocations for describing communication</h3><div class="vocab-target"><strong>Целевая лексика:</strong> <em>effective communication, make an effort, have difficulty, influence the content, change behaviour, social relationships, verbal / nonverbal message, communication channel</em></div><p><strong>Задание.</strong> Соедините начало и конец словосочетаний, затем используйте четыре из них в собственных предложениях.</p><div class="tw"><table><tbody><tr><td>1. effective</td><td>a. an effort</td></tr><tr><td>2. make</td><td>b. communication</td></tr><tr><td>3. have</td><td>c. behaviour</td></tr><tr><td>4. change</td><td>d. difficulty</td></tr><tr><td>5. communication</td><td>e. relationships</td></tr><tr><td>6. social</td><td>f. channel</td></tr></tbody></table></div></section><section class="exercise" id="ex-1-9-172"><h3 class="h2"><span class="num">9.</span> Заполните пропуски личными и притяжательными местоимениями:</h3><p>1) Learning to be better communicators is important to all of us in both __________ private and public lives.</p><p>2) As people grow up, __________ needs grow increasingly complex, and along with __________, our communication efforts.</p><p>3) We learn that the success of a communication strategy depends on the willingness of a person to understand and on the interpretation he gives to __________ meaning.</p><p>4) As she had formal training in the classroom, that afforded __________ an opportunity to gain systematic practice in an even greater range of communicative activities.</p><p>5) We begin at birth by interacting with those around __________ to keep warm, dry and fed.</p><p>6) Whereas a baby's cry will be enough to bring a mother with warm milk in one instance, __________ may produce no response at all in another.</p><p>7) Along with words, a person learns to use __________ intonation, __________ gestures, __________ facial expression, and many other features of communication to convey __________ meaning to persons around __________.</p><p>8) Students have different tasks while studying and classrooms also provide __________ with practice in written communications of many kinds.</p><p>9) Reports, essays, poems, business letters, and job application forms are routinely included in many university curricula and provide __________ (older learners) with practical writing experience.</p><p>10) I understand that a concern for communication extends beyond __________ school years and into __________ adult life.</p></section><section class="exercise" id="ex-1-10-186"><h3 class="h2"><span class="num">10.</span> Раскройте скобки и поставьте глагол to be в нужной форме:</h3><p>Assertiveness training, the development of strategies for conquering stage fright, and an awareness of body language – the subtle messages conveyed by posture, hand movement, eyes, smile – __________ (to be) among the many avenues to improved communication. The widespread popularity of guides to improving communication within couples and between parents and children illustrates our ever present concern with learning to communicate more effectively in our most intimate relationships, to understand and be understood by those closest to us.</p><p>Training of an even more specialized nature __________ (to be) available to those whose professional responsibilities or aspirations require it. Advice on how to dress and appear 'businesslike', including a recommendation for the deliberate use of technical jargon to establish authority, __________ (to be) available to professional women who want to be taken seriously in what has historically been considered a man's world. Specialized courses in interviewing techniques __________ (to be) useful for employers and others who interview people frequently in their professional lives.</p><p><strong>Переведите текст на русский язык. Объясните разницу между употреблением предлогов among и between. Обратите внимание на употребление артиклей и поясните причину их использования в тексте.</strong></p></section><section class="exercise" id="ex-1-11-206"><h3 class="h2"><span class="num">11.</span> Найдите синонимы слов и соедините колонки:</h3><div class="tw"><table><thead><tr><th>1) definition</th><th>a) self-confidence</th></tr></thead><tbody><tr><td>2) study</td><td>b) origin</td></tr><tr><td>3) component</td><td>c) obstacle</td></tr><tr><td>4) feedback</td><td>d) attempt</td></tr><tr><td>5) source</td><td>e) private</td></tr><tr><td>6) occur</td><td>f) oral</td></tr><tr><td>7) effort</td><td>g) fear</td></tr><tr><td>8) effect</td><td>h) element</td></tr><tr><td>9) fright</td><td>i) happen</td></tr><tr><td>10) widespread</td><td>j) influence</td></tr><tr><td>11) verbal</td><td>k) explanation</td></tr><tr><td>12) difficulty</td><td>l) prevalent</td></tr><tr><td>13) assertiveness</td><td>m) response</td></tr><tr><td>14) intimate</td><td>n) inquiry</td></tr></tbody></table></div></section><section class="exercise vocab-boost" id="vf-4-paraphrase"><h3 class="h2">Vocabulary Focus 4. Paraphrasing without losing meaning</h3><div class="vocab-target"><strong>Целевая лексика:</strong> <em>definition, feedback, source, occur, effort, effect, widespread, difficulty, assertiveness, intimate</em></div><p><strong>Задание.</strong> Перефразируйте предложения, заменяя выделенное слово подходящим синонимом из упражнения 11.</p><ol class="nums"><li>The problem <strong>happened</strong> during an online meeting.</li><li>Her presentation had a strong <strong>influence</strong> on the audience.</li><li>This communication problem is very <strong>prevalent</strong> in remote teams.</li><li>He made an <strong>attempt</strong> to clarify the message.</li><li>Immediate <strong>response</strong> helps the source correct the message.</li></ol></section><section class="exercise" id="ex-1-12-226"><h3 class="h2"><span class="num">12.</span> Заполните таблицу формами Present Simple, Past Simple, Present Perfect, Present Perfect Continuous на примере глагола, данного в таблице, учитывая (где необходимо) 3 лицо ед.ч.:</h3><div class="tw"><table><thead><tr><th></th><th>Present Simple</th><th>Past Simple</th><th>Present Perfect</th><th>Present Perfect Continuous</th></tr></thead><tbody><tr><td>to study</td><td>__________</td><td>__________</td><td>__________</td><td>__________</td></tr></tbody></table></div><p><strong>Как будут образовываться вопросительные и отрицательные предложения в данных группах времён?</strong></p><div class="tw"><table><thead><tr><th>Present Simple</th><th>Past Simple</th><th>Present Perfect</th><th>Present Perfect Continuous</th></tr></thead><tbody><tr><td>__________</td><td>__________</td><td>__________</td><td>__________</td></tr><tr><td>__________</td><td>__________</td><td>__________</td><td>__________</td></tr></tbody></table></div></section><section class="exercise" id="ex-1-13-236"><h3 class="h2"><span class="num">13.</span> Образуйте форму Past Simple от следующих глаголов и дайте их русские эквиваленты. Определите, какой глагол в списке является неправильным.</h3><p>to continue, to talk, to decode, to ask, to influence, to experience, to work, to communicate, to encode, to listen, to lisp, to smile, to cry, to occur, to define, to live, to produce, to receive, to introduce, to take.</p></section><section class="exercise" id="ex-1-14-262"><h3 class="h2"><span class="num">14.</span> Посмотрите в словаре форму прошедшего времени следующих неправильных глаголов и запомните её:</h3><p>to begin, to send, to understand, to read, to speak, to tell, to hear, to do, to make, to have, to teach, to learn, to meet.</p></section><section class="exercise" id="ex-1-15-281"><h3 class="h2"><span class="num">15.</span> Используя глаголы из предыдущих двух упражнений, составьте предложения в Present Simple и Past Simple.</h3></section><section class="exercise" id="ex-1-16-300"><h3 class="h2"><span class="num">16.</span> Образуйте форму Present Perfect. Затем определите, какие из данных глаголов естественно употребляются в Present Perfect Continuous, и составьте допустимые формы.</h3><p>to conquer, to convey, to improve, to illustrate, to specialize, to require, to appear, to include, to use, to establish, to consider, to interview.</p><p><strong>Используя данные глаголы, составьте предложения в Present Perfect и Present Perfect Continuous.</strong></p></section><section class="exercise" id="ex-1-17-330"><h3 class="h2"><span class="num">17.</span> Найдите антонимы слов и соедините колонки:</h3><div class="tw"><table><thead><tr><th>1) temporary</th><th>a) worsen</th></tr></thead><tbody><tr><td>2) effective</td><td>b) local</td></tr><tr><td>3) difficulty</td><td>c) quiet</td></tr><tr><td>4) different</td><td>d) rarely</td></tr><tr><td>5) noise</td><td>e) permanent</td></tr><tr><td>6) foreigner</td><td>f) similar</td></tr><tr><td>7) useful</td><td>g) regress</td></tr><tr><td>8) frequently</td><td>h) ineffective</td></tr><tr><td>9) development</td><td>i) useless</td></tr><tr><td>10) improve</td><td>j) ease</td></tr></tbody></table></div></section><section class="exercise" id="ex-1-18-346"><h3 class="h2"><span class="num">18.</span> Заполните таблицу однокоренными словами:</h3><div class="tw"><table><thead><tr><th></th><th>VERB</th><th>NOUN</th><th>ADJECTIVE</th><th>ADVERB</th></tr></thead><tbody><tr><td>1.</td><td>__________</td><td>communication</td><td>__________</td><td>__________</td></tr><tr><td>2.</td><td>define</td><td>__________</td><td>__________</td><td>__________</td></tr><tr><td>3.</td><td>__________</td><td>__________</td><td>informative</td><td>__________</td></tr><tr><td>4.</td><td>__________</td><td>__________</td><td>__________</td><td>technically</td></tr><tr><td>5.</td><td>__________</td><td>influence</td><td>__________</td><td>__________</td></tr><tr><td>6.</td><td>change</td><td>__________</td><td>__________</td><td>__________</td></tr><tr><td>7.</td><td>__________</td><td>__________</td><td>assertive</td><td>__________</td></tr><tr><td>8.</td><td>__________</td><td>employment</td><td>__________</td><td>__________</td></tr><tr><td>9.</td><td>specialize</td><td>__________</td><td>__________</td><td>__________</td></tr></tbody></table></div></section><section class="exercise vocab-boost" id="vf-5-wordfamilies"><h3 class="h2">Vocabulary Focus 5. Word families in professional speech</h3><div class="vocab-target"><strong>Целевая лексика:</strong> <em>communicate – communication – communicative; define – definition; inform – information – informative; influence – influential; assert – assertive – assertiveness; employ – employment – employee/employer</em></div><p><strong>Задание.</strong> Выберите правильную форму слова.</p><ol class="nums"><li>Clear ______ is essential in multinational teams. (communicate)</li><li>The report gives an ______ description of the problem. (inform)</li><li>Her manager is highly ______ in the department. (influence)</li><li>Students need to develop ______ when presenting their position. (assert)</li><li>The lecturer asked us to ______ the term precisely. (definition)</li></ol></section></section><section class="section" id="text-2-introductions"><h2 class="h1">Text 2. Introductions</h2><div class="tw"><table><tbody><tr><td>Susan: Hello, I'm Susan Green. I'm twenty three. My father is American and my mother is Russian. We live in Boston. I'm a graduate of State University of New York (SUNY). In the USA I studied politics, communication, the media, and the Russian language. Last year I came to Moscow to continue my studies at Moscow State University. I'm a postgraduate of the School of Public Administration. I have many friends, students of Moscow University. Meet some of them.</td><td>Сьюзан: Привет, я Сьюзан Грин. Мне 23 года. Мой отец американец, а мама русская. Мы живём в Бостоне. Я выпускница Государственного университета Нью-Йорка. В Америке я изучала политику, коммуникацию, средства массовой информации и русский язык. В прошлом году я приехала в Москву, чтобы продолжить занятия в Московском государственном университете. Я аспирантка факультета государственного управления. У меня много друзей, студентов Московского университета. Познакомьтесь с некоторыми из них.</td></tr><tr><td>Michael: Good afternoon. Let me introduce myself. My name's Michael Lobov. I'm seventeen. I'm a first-year undergraduate of Moscow State University. I study Human Resources Management at the School of Public Administration.</td><td>Михаил: Добрый день. Позвольте представиться. Меня зовут Михаил Лобов. Мне 17. Я студент первого курса Московского государственного университета. Я изучаю управление персоналом на факультете государственного управления.</td></tr><tr><td>Susan: And this is Nicolas Krasnov.</td><td>Сьюзан: А это Николай Краснов.</td></tr><tr><td>Nicolas: How do you do. I'm twenty. I study at the evening department of the journalistic faculty. I'm a part-time student. Let me introduce my friend, Olga Tevosjan. She is Armenian. Olga is a second-year undergraduate of the State Academy of Labour and Social Development. She studies Public Relations.</td><td>Николай: Здравствуйте. Мне 20 лет. Я учусь на вечернем отделении факультета журналистики. Я студент-заочник. Позвольте представить вам мою подругу, Ольгу Тевосян. Она армянка. Ольга студентка второго курса Академии труда и социального развития. Она изучает связи с общественностью.</td></tr><tr><td>Olga: Nice to meet you. Two years ago I came from Armenia and now I live together with the family of my elder brother. Armen is married but they have no children yet. Armen is a businessman, his firm produces paper. Let me tell you about my family. I have a very big family and all of us live in different cities. My parents are doctors, they live in Yerevan together with my younger brother and sister. They are students of Yerevan State University. Levon is a future computer programmer and Mary wants to be a teacher of history. My uncle together with his wife and two daughters live in St-Petersburg. My cousins are twins. They are six years old. My uncle is an engineer. And my grandfather is a famous psychologist. Now he is a professor at Sorbonne University and lives in Paris. He is fifty-eight. Every year we get together at Christmas and have a merry family holiday.</td><td>Ольга: Рада с вами познакомиться. Я приехала из Армении два года назад и сейчас живу с семьёй моего старшего брата. Армен женат, но у них пока нет детей. Армен бизнесмен, его компания производит бумагу. Позвольте рассказать вам о моей семье. У меня очень большая семья, и все мы живём в разных городах. Мои родители – доктора и живут в Ереване с моими младшими братом и сестрой. Они студенты Ереванского государственного университета. Левон – будущий программист, а Мери хочет быть учителем истории. Мой дядя, его жена и две дочки живут в Санкт-Петербурге. Мои двоюродные сёстры – близнецы. Им шесть лет. Мой дядя – инженер, а мой дедушка – знаменитый психолог. Сейчас он профессор Сорбонского университета и живёт в Париже. Ему 58 лет. Каждый год на Рождество мы собираемся вместе и весело справляем праздники.</td></tr><tr><td>Michael: We often get together and talk about our countries, our professions and future work. Susan tells us about the American system of education and their way of life and we help her to learn more about our national cultures.</td><td>Михаил: Мы тоже часто собираемся вместе и говорим о наших странах, профессиях и будущей работе. Сьюзан рассказывает нам об американской системе образования и их стиле жизни, а мы помогаем ей узнать больше о нашей культуре.</td></tr></tbody></table></div></section><section class="section" id="language-study-text-2"><h2 class="h1">Language Study – Text 2</h2><section class="exercise" id="ex-2-1-354"><h3 class="h2"><span class="num">1.</span> Найдите в тексте 2 все термины родства и сделайте таблицу четырёх поколений. Недостающие слова найдите в русско-английском словаре.</h3></section><section class="exercise vocab-boost" id="vf-6-family"><h3 class="h2">Vocabulary Focus 6. Family and personal background</h3><div class="vocab-target"><strong>Целевая лексика:</strong> <em>parents, spouse, husband, wife, son, daughter, brother, sister, grandparents, relatives, graduate, undergraduate, postgraduate</em></div><p><strong>Задание.</strong> Выберите 8 слов и распределите их по трём группам: <em>family relationships</em>, <em>marital relationships</em>, <em>education/status</em>. Затем добавьте по одному собственному слову в каждую группу.</p></section><section class="exercise" id="ex-2-2-362"><h3 class="h2"><span class="num">2.</span> Образуйте форму множественного числа следующих существительных, обращая внимание на изменения в правописании.</h3><p>difficulty, phenomenon, family, child, curriculum, wife, study, businessman, half, datum</p></section><section class="exercise" id="ex-2-3-378"><h3 class="h2"><span class="num">3.</span> Переведите предложения на английский язык:</h3><p>1) Залог эффективности коммуникации – простота, как у информационных знаков в аэропортах.</p><p>2) Люди сейчас так перегружены информацией, что усложнять себе жизнь никто добровольно не захочет.</p><p>3) Чтобы достучаться до нужной аудитории, будь то клиенты, акционеры, сотрудники и т.д., надо удивлять, а для этого не бояться быть достаточно дерзким.</p><p>4) Главное, надо помнить, что не существует коммуникации, которая не имеет последствий.</p><p>5) Параллельно деятельность директоров становится все более сложной.</p><p>6) Объект корпоративной коммуникации – возможность быть способным точно, эффективно, логично и креативно реализовать эти цели.</p></section><section class="exercise vocab-boost" id="vf-7-introductions"><h3 class="h2">Vocabulary Focus 7. Introducing yourself and other people</h3><div class="vocab-target"><strong>Целевая лексика:</strong> <em>let me introduce myself, I am a graduate of…, I study…, I came to…, continue my studies, a colleague of mine, nice to meet you, first impressions</em></div><p><strong>Задание.</strong> Составьте из опорных элементов три версии самопрезентации: 1) университетская, 2) профессиональная, 3) неформальная. В каждой используйте минимум четыре выражения из списка.</p></section><section class="exercise" id="ex-2-4-395"><h3 class="h2"><span class="num">4.</span> Заполните пропуски артиклями, где необходимо.</h3><p>1) _____ Communicating – or getting our message across – is _____ concern of us all in our daily lives in whatever language we happen to use.</p><p>2) We learn very soon that _____ success of _____ particular communication strategy depends on _____ willingness of others to understand and on _____ interpretation they give to our meaning.</p><p>3) Whereas _____ baby's cry will be enough to bring _____ mother running with _____ clean nappy and _____ warm milk in one instance, it may produce no response at all in another.</p><p>4) We learn then that _____ meaning is never one-sided. Rather, it is negotiated, between _____ persons involved.</p><p>5) _____ expressions we hear in _____ playground or through _____ bedroom door may or may not be suitable at _____ supper table.</p><p>6) Along with _____ words, we learn to use _____ intonation,_____ gestures,_____ facial expression, and many other features of _____ communication to convey our meaning to _____ persons around us.</p><p>7) Most of our communication strategies develop unconsciously, through _____ imitation of persons we admire and would like to resemble to some extent – and _____ success we experience in our interactions.</p><p>8) _____ Formal training in _____ classroom affords us _____ opportunity to gain _____ systematic practice in _____ even greater range of communicative activities.</p><p>9) Group discussions, moderated by _____ teacher, give young learners _____ important practice in taking turns, getting _____ attention of _____ group, stating one's views and perhaps disagreeing with others in _____ setting other than _____ informal family or playground situations with which they are familiar.</p><p>10) Birthday cards are _____ early writing task for many children.</p></section><section class="exercise" id="ex-2-5-414"><h3 class="h2"><span class="num">5.</span> Прочтите текст, раскройте скобки и поставьте глагол в нужной форме. Переведите текст на русский язык.</h3><p>One of the important lessons to be learnt, as in other communicative contexts, __________ (to be) that what matters __________ (to be) not the intent but the interpretation of the communicative act. Conveyance of meaning in unfamiliar contexts __________ (require) practice in the use of the appropriate register or style of speech. If a woman __________ (want) to sound like a business executive, she __________ (have) to talk the way business executives talk while they __________ (to be) on the job. The same register would of course be inappropriate when talking of personal matters with a spouse or intimate friend.</p><p>Similarly, executives who must cope with an investigative reporter may be helped to develop an appropriate style. They need to learn how to convey a sense of calm and self-assurance. Effective communication in this particular context may require the use of a language to avoid a direct answer or to hide one's intent while appearing to be open and forthright. In both instances an understanding of what is really happening, as opposed to what one would like to see happening __________ (to be) the first step towards improved communication. Communication, then, __________ (to be) a continuous process of expression, interpretation and negotiation.</p></section><section class="exercise" id="ex-2-6-424"><h3 class="h2"><span class="num">6.</span> Найдите синонимы слов и соедините колонки:</h3><div class="tw"><table><thead><tr><th>1) intent</th><th>a) escape</th></tr></thead><tbody><tr><td>2) convey</td><td>b) demand</td></tr><tr><td>3) familiar</td><td>c) alike</td></tr><tr><td>4) require</td><td>d) purpose</td></tr><tr><td>5) improve</td><td>e) known</td></tr><tr><td>6) inappropriate</td><td>f) communicate</td></tr><tr><td>7) similar</td><td>g) direct</td></tr><tr><td>8) assurance</td><td>h) make better</td></tr><tr><td>9) avoid</td><td>i) unsuitable</td></tr><tr><td>10) forthright</td><td>j) confidence</td></tr></tbody></table></div></section><section class="exercise vocab-boost" id="vf-8-register"><h3 class="h2">Vocabulary Focus 8. Register and professional communication</h3><div class="vocab-target"><strong>Целевая лексика:</strong> <em>intent, interpretation, convey meaning, appropriate register, sound businesslike, self-assurance, avoid a direct answer, open and forthright, cope with</em></div><p><strong>Задание.</strong> Заполните мини-ситуации подходящими словосочетаниями.</p><ol class="nums"><li>In an interview, the candidate tried to ______ and answer confidently.</li><li>The speaker’s ______ was positive, but the audience interpreted the message differently.</li><li>Professionals need an ______ when discussing sensitive issues.</li><li>A spokesperson may need to ______ difficult questions without sounding evasive.</li><li>Good examples help speakers ______ clearly.</li></ol></section><section class="exercise" id="ex-2-7-440"><h3 class="h2"><span class="num">7.</span> Используя следующие словосочетания, составьте предложения со сказуемым в форме Present Simple, Past Simple, Present Perfect и Present Perfect Continuous:</h3><p>1. to learn a lesson; 2. to work in communicative contexts; 3. to require practice; 4. to use an appropriate speech register; 5. to sound businesslike; 6. to communicate with his parents; 7. to receive information; 8. to study the behaviour; 9. to speak to students; 10. to communicate with foreigners; 11. to be on the job; 12. to send messages; 13. to talk with a spouse; 14. to cope with problems; 15. to convey a meaning; 16. to avoid an answer; 17. to hide one's intent; 18. to improve communication.</p></section><section class="exercise" id="ex-2-8-464"><h3 class="h2"><span class="num">8.</span> Заполните пропуски личными и притяжательными местоимениями:</h3><p>1. I usually begin __________ studies in the morning.</p><p>2. She has difficulty when communicating with __________ daughter.</p><p>3. __________ reads newspapers and talks with __________ intimate friends every evening.</p><p>4. He often speaks with __________ about __________ different types of communication.</p><p>5. __________ son speaks Japanese very well.</p><p>6. I do not understand __________.</p><p>7. We take __________ to the meeting every evening.</p><p>8. __________ children do not use nonverbal communication in unfamiliar cultures.</p><p>9. __________ mother influences __________ attitude to __________ children.</p><p>10. __________ nonverbal communication is poor.</p><p>11. Mary often tells __________ about __________ interpretation of different words.</p><p>12. Michael does not understand __________.</p></section><section class="exercise" id="ex-2-9-480"><h3 class="h2"><span class="num">9.</span> Переведите предложения на английский язык:</h3><p>1) Каждое утро я посылаю сообщения моим друзьям.</p><p>2) Наше определение имеет несколько компонентов.</p><p>3) Коммуникация представляет собой процесс обмена информацией между двумя коммуникаторами.</p><p>4) Если у вас есть предубеждения, то коммуникация неэффективна.</p><p>5) Невербальная коммуникация очень влияет на моего сына.</p><p>6) Он не изучает связи с общественностью.</p><p>7) Коммуникация происходит от латинского слова communicatio – единство, передача, соединение, сообщение.</p><p>8) Общепринятого единого определения коммуникаций не существует.</p><p>9) Понятие коммуникаций очень широкое.</p><p>10) Примеры коммуникаций мы встречаем повсюду.</p><p>11) Все коммуницирует явно или неявно.</p><p>12) Коммуникации созданы природой, человеком, искусственным интеллектом.</p><p>13) Коммуникации бывают познанные, частично познанные и непознанные.</p><p>14) К познанным коммуникациям мы можем отнести все виды коммуникаций, которые можно описать, повторить или увидеть.</p><p>15) К частично познанным человек может отнести те коммуникации, которые вычленены, развиваются, но люди окончательно не понимают механизм их действия или возникновения.</p><p>16) Непознанные коммуникации – это те виды коммуникаций, которым человек ещё не дал научное обоснование.</p><p>17) Непознанных коммуникаций становится всё меньше и меньше.</p><p>18) Главным в понятии коммуникаций является обмен.</p><p>19) Во время обмена информацией может существовать как односторонняя, так и обратная связь, при этом субъекты могут быть как связаны между собой, так и не связаны.</p><p>20) Чем больше будет участников обмена информацией, тем сложнее схема взаимодействия участников коммуникативного акта, в котором могут существовать перекрестные связи.</p></section><section class="exercise vocab-boost" id="vf-9-recycle"><h3 class="h2">Vocabulary Focus 9. Unit vocabulary recycling</h3><div class="vocab-target"><strong>Целевая лексика:</strong> <em>communication, message, feedback, context, channel, noise, make an effort, have difficulty, influence, convey meaning, appropriate register, first impressions, introduce</em></div><p><strong>Задание.</strong> Выберите 10 единиц из списка и напишите по одному вопросу к партнёру так, чтобы слово нельзя было заменить общим словом без потери смысла. Затем проведите взаимное интервью.</p></section></section><section class="section" id="communication-studies"><h2 class="h1">Communication Studies</h2><h3 class="h2" id="intonation">Интонация: нисходящая шкала</h3><p class="lead">Основной интонационной моделью в английском языке является нисходящая шкала. Первый ударный слог произносится на высокой ноте. На этом же уровне произносятся последующие безударные слоги. Дальше ударные слоги постепенно «спускаются по лесенке», а безударные следуют за ними. Общий интонационный контур напоминает начало русской народной песни «Во поле берёза стояла». Утверждения, специальные вопросы (вопросы, начинающиеся с вопросительного слова) и команды произносятся с нисходящим тоном в конце шкалы.</p><section class="exercise" id="ex-2-1-528"><h3 class="h2"><span class="num">1.</span> Прочтите следующие предложения с нисходящим завершением. Следите за нисходящей шкалой.</h3><p>1. I'm Russian.</p><p>2. Let me introduce myself.</p><p>3. My name is Nicolas Krasnov.</p><p>4. I'm a graduate of Moscow University.</p><p>5. I'm a part-time student.</p><p>6. I study management and communication.</p><p>7. It changes their behaviour.</p><p>8. She had problems with her son.</p><p>9. I live together with the family of my elder brother.</p><p>10. She makes an effort to understand him.</p></section><section class="exercise" id="ex-2-2-555"><h3 class="h2"><span class="num">2.</span> Прочтите текст 2 по ролям, соблюдая нисходящую шкалу.</h3></section><section class="exercise" id="ex-2-3-559"><h3 class="h2"><span class="num">3.</span> Используя следующую схему, расскажите о процессе коммуникации.</h3><figure aria-labelledby="comm-model-caption" class="comm-model">
+<svg aria-label="Модель процесса коммуникации: source, message, receiver, feedback, channel, context and noise" role="img" viewbox="0 0 980 600">
+<defs>
+<filter height="140%" id="softShadow" width="140%" x="-20%" y="-20%"><fedropshadow dx="0" dy="8" flood-opacity="0.12" stddeviation="10"></fedropshadow></filter>
+<marker id="arrowGold" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="8" refy="3"><path d="M0,0 L0,6 L9,3 z" fill="#A9762A"></path></marker>
+<marker id="arrowGreen" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="8" refy="3"><path d="M0,0 L0,6 L9,3 z" fill="#2E6B54"></path></marker>
+</defs>
+<rect fill="#F8F6F0" height="550" rx="28" stroke="#D8D4CB" stroke-width="2" width="930" x="25" y="25"></rect>
+<text class="cm-kicker" text-anchor="middle" x="490" y="68">COMMUNICATION CONTEXT</text>
+<text class="cm-sub" text-anchor="middle" x="490" y="98">physical · social-psychological · temporal</text>
+<rect fill="#143D30" filter="url(#softShadow)" height="150" rx="24" width="230" x="80" y="190"></rect>
+<text class="cm-card-title light" text-anchor="middle" x="195" y="240">SOURCE</text>
+<text class="cm-card-sub light" text-anchor="middle" x="195" y="274">encodes the message</text>
+<text class="cm-card-sub light" text-anchor="middle" x="195" y="302">knowledge · attitude · experience</text>
+<rect fill="#143D30" filter="url(#softShadow)" height="150" rx="24" width="230" x="670" y="190"></rect>
+<text class="cm-card-title light" text-anchor="middle" x="785" y="240">RECEIVER</text>
+<text class="cm-card-sub light" text-anchor="middle" x="785" y="274">decodes the message</text>
+<text class="cm-card-sub light" text-anchor="middle" x="785" y="302">knowledge · attitude · experience</text>
+<rect fill="#FFFFFF" filter="url(#softShadow)" height="80" rx="18" stroke="#A9762A" stroke-width="2.5" width="236" x="372" y="172"></rect>
+<text class="cm-card-title" text-anchor="middle" x="490" y="207">MESSAGE</text>
+<text class="cm-card-sub" text-anchor="middle" x="490" y="232">verbal · nonverbal</text>
+<rect fill="#EEF3EF" height="68" rx="16" stroke="#2E6B54" stroke-width="2" width="216" x="382" y="292"></rect>
+<text class="cm-small-title" text-anchor="middle" x="490" y="320">CHANNEL</text>
+<text class="cm-card-sub" text-anchor="middle" x="490" y="344">auditory · visual · technical</text>
+<path d="M310 225 C340 205 350 205 372 210" fill="none" marker-end="url(#arrowGold)" stroke="#A9762A" stroke-width="5"></path>
+<path d="M608 210 C630 205 640 205 670 225" fill="none" marker-end="url(#arrowGold)" stroke="#A9762A" stroke-width="5"></path>
+<path d="M690 382 C620 468 360 468 290 382" fill="none" marker-end="url(#arrowGreen)" stroke="#2E6B54" stroke-width="5"></path>
+<rect fill="#FFFFFF" height="62" rx="16" stroke="#2E6B54" stroke-width="2" width="180" x="400" y="410"></rect>
+<text class="cm-small-title" text-anchor="middle" x="490" y="437">FEEDBACK</text>
+<text class="cm-card-sub" text-anchor="middle" x="490" y="460">receiver becomes source</text>
+<g transform="translate(70,400)">
+<circle cx="48" cy="48" fill="#F9EDE8" r="43" stroke="#A03D22" stroke-width="2"></circle>
+<path d="M48 19 L58 41 L81 44 L63 60 L68 83 L48 71 L28 83 L33 60 L15 44 L38 41 Z" fill="#A03D22" opacity="0.16"></path>
+<text class="cm-small-title warn" x="100" y="38">NOISE</text>
+<text class="cm-card-sub" x="100" y="62">physical · psychological</text>
+<text class="cm-card-sub" x="100" y="84">semantic</text>
+</g>
+<path d="M250 430 C330 392 360 362 394 336" fill="none" stroke="#A03D22" stroke-dasharray="9 8" stroke-width="3"></path>
+<text class="cm-foot" text-anchor="middle" x="490" y="535">Effective communication depends on shared experience, appropriate context, clear channels and manageable noise.</text>
+</svg>
+<figcaption id="comm-model-caption">Модель коммуникации: сообщение проходит от источника к получателю через канал; получатель формирует обратную связь, а контекст и шум влияют на весь процесс.</figcaption>
+</figure></section><section class="exercise" id="ex-2-4-573"><h3 class="h2"><span class="num">4.</span> Используя лексику урока, расскажите о себе и своей семье.</h3></section><section class="exercise" id="ex-2-5-583"><h3 class="h2"><span class="num">5.</span> Определите беседующих: а) два бизнесмена, б) два друга, в) учительница и ученик, г) мать и сын, д) две подруги, е) секретарь и клиент.</h3><p><strong>1.</strong> A: Hi! How are you?</p><p>B: Fine, thanks, and you?</p><p><strong>2.</strong> A: Good morning, Mrs Brown.</p><p>B: Good morning, Bill.</p><p><strong>3.</strong> A: Hello, John. How are things?</p><p>B: Oh, hello. I'm okay.</p><p><strong>4.</strong> A: Good afternoon.</p><p>B: Good afternoon, sir. Can I help you?</p><p><strong>5.</strong> A: Mary!</p><p>B: Oh, hello, Ann. I haven't seen you since last year! How are you?</p><p>A: Fine, thanks. And how is Peter?</p><p><strong>6.</strong> A: Good morning, Mr Canning. We've met in Paris. I'm Harold Smith.</p><p>B: Oh, good morning, Mr Smith. It's nice to meet you again.</p></section><section class="exercise" id="ex-2-6-607"><h3 class="h2"><span class="num">6.</span> Что вы скажете, если:</h3><p>1) с вами поздоровался ваш преподаватель?</p><p>2) вы встретили на улице старого друга?</p><p>3) вы пришли в гости, и дверь открыла мать вашего друга?</p><p>4) вы пришли в учреждение и обращаетесь к секретарю?</p><p>5) вы хотите поприветствовать компанию старых друзей?</p></section><section class="exercise" id="ex-2-7-623"><h3 class="h2"><span class="num">7.</span> Определите, в какой обстановке – официальной или неофициальной – знакомятся эти люди:</h3><p><strong>1)</strong> A: How do you do? Let me introduce myself. My name is John Harrison. I work for Sonders Electronics.</p><p>B: How do you do, Mr. Harrison? It's nice to meet you.</p><p><strong>2)</strong> A: Bill, this is Helen Johnson. She is here to continue her studies in Moscow University.</p><p>B: Hello, Helen, pleased to meet you.</p><p>C: Pleased to meet you, too.</p><p><strong>3)</strong> A: Margaret, you haven't met Susan Davidson, have you?</p><p>B: No, not yet. Hello, Miss Davidson, nice to meet you.</p><p>C: Hello, nice to meet you, too.</p><p><strong>4)</strong> A: Mr. Brown, I'd like to introduce Felicity O'Connor, our business partner.</p><p>B: How do you do, I'm very pleased to meet you.</p><p>C: I'm pleased to meet you, too, Mr. Brown.</p><p><strong>5)</strong> A: Hi, I'm Bob Addison.</p><p>B: Hi, my name is Lucy Smith, how are you?</p><p><strong>6)</strong> A: Hello, Bill, meet my sister Ann. She has come here for holidays.</p><p>B: Hi, Ann, nice to meet you.</p><p>C: Nice to meet you too. My brother has told me about you.</p><p><strong>7)</strong> A: Charles, I'd like you to meet Rick Fraser, from London University.</p><p>B: How do you do? Please, call me Rick.</p><p>C: Pleased to meet you, Rick, I'm Charles Carter.</p><p><strong>8)</strong> A: You must be Susan Johnson.</p><p>B: That's right.</p><p>A: Hello, I'm Terry Smith, I'm pleased to meet you.</p><p>B: Pleased to meet you, too.</p></section><section class="exercise" id="ex-2-8-660"><h3 class="h2"><span class="num">8.</span> Объедините фразы из левой и правой колонок в мини-диалоги.</h3><div class="tw"><table><tbody><tr><td>1. Hello, my name is Peter.</td><td>A. How do you do, Mr. Harrison.</td></tr><tr><td>2. Let me introduce myself, I'm John Harrison.</td><td>B. No, hello, Donald. Nice to meet you.</td></tr><tr><td>3. It's very nice to meet you.</td><td>C. Good to meet you, Peter. I'm Tom.</td></tr><tr><td>4. What do you think of life in Russia?</td><td>D. It's very nice to meet you, too.</td></tr><tr><td>5. I'd like you to meet Claude King.</td><td>E. I'm Helen. It's great to have you with us, Jane.</td></tr><tr><td>6. What are your first impressions of France?</td><td>F. With pleasure. Paul, I want you to meet Tom Grey, a friend of mine.</td></tr><tr><td>7. John, could you introduce me to Paul Roberts?</td><td>G. It's quite different from what I expected.</td></tr><tr><td>8. Ann, this is Michael Davidson, a colleague of mine.</td><td>H. I'm pleased to meet you, Mr. Davidson.</td></tr><tr><td>9. James, have you met Donald?</td><td>I. I'm delighted to meet you.</td></tr><tr><td>10. Hi, I'm Jane.</td><td>J. It's a delightful country.</td></tr></tbody></table></div></section><section class="exercise" id="ex-2-9-676"><h3 class="h2"><span class="num">9.</span> Сделайте диалоги из предлагаемого набора фраз.</h3><p><strong>1)</strong></p><p>Pleased to meet you, John.</p><p>Sue, this is John, a friend of mine.</p><p>How are you?</p><p>Nice to meet you.</p><p><strong>2)</strong></p><p>How do you do, Peter.</p><p>Mrs. Johnson, I'd like you to meet Peter Green from Aston University.</p><p>Please, call me Peter.</p><p>I'm delighted to meet you.</p><p><strong>3)</strong></p><p>Yes, that's right.</p><p>Good to meet you, too.</p><p>Hello, I'm Gladys Riley.</p><p>It's quite different from what I expected.</p><p>You must be Leonid Loktev from Moscow.</p><p>I'm pleased to meet you.</p><p>How do you find things over here.</p><p><strong>4)</strong></p><p>How do you do?</p><p>Mr. Chekov, is it your first visit in Britain?</p><p>How do you do?</p><p>I wish I had more time for sightseeing.</p><p>Mary, let me introduce Peter Chekov, he is our representative in Moscow.</p><p>Oh, yes.</p><p>How do you like London?</p><p><strong>5)</strong></p><p>I'm Ludmila Krasnova from Redard Electronics.</p><p>How do you do?</p><p>I'd like to introduce myself.</p><p>I'm Patrick O'Hara.</p><p>It's very nice to meet you, Ludmila.</p><p><strong>6)</strong></p><p>Fine, and you?</p><p>I'm from St Petersburg.</p><p>Hello, Maggie.</p><p>Nice to meet you, Maggie.</p><p>How are you, Jane?</p><p>Nice to meet you, too.</p><p>I'd like you to meet Helen.</p><p>Where are you from, Helen?</p><p>She is over here on holidays.</p><p>It's great!</p><p><strong>7)</strong></p><p>How do you do?</p><p>What do you think of life in England?</p><p>How do you do?</p><p>Mary, I'd like you to meet my brother, Tom.</p><p>It's bound to be strange at first.</p><p>I'm still feeling pretty homesick.</p><p><strong>8)</strong></p><p>Mrs. Lyons, I'd like to introduce my Russian friend, Boris.</p><p>What are your first impressions of England?</p><p>How do you do?</p><p>If it wasn't for the climate, I'd like it very much.</p><p>How do you do?</p></section></section>
+<section class="section" id="additional-practice"><h2 class="h1">Дополнительная практика</h2>
+<p class="lead">Дополнительный блок закрывает две лакуны исходного материала: повторяемость активной лексики и системный контраст грамматических форм. Упражнения можно использовать выборочно как аудиторную практику, домашнюю работу или короткий контроль.</p>
+<h3 class="h2" id="vocab-extra"><span class="num">A.</span> Vocabulary consolidation</h3>
+<section class="exercise"><div class="added-tag">Дополнительное упражнение V1</div><h4 class="h3">Complete the communication model</h4>
+<p>Complete the sentences with the words: <strong>source, receiver, feedback, channel, context, encode, decode, noise</strong>.</p>
+<ol class="nums"><li>The ______ turns an idea into a message.</li><li>The message travels through a communication ______.</li><li>The ______ interprets the message.</li><li>The receiver may send ______ back to the source.</li><li>To ______ a message means to put an idea into words, signs or another code.</li><li>To ______ a message means to interpret that code.</li><li>Physical, psychological and semantic ______ can reduce effectiveness.</li><li>The meaning of a message is influenced by its ______.</li></ol>
+</section>
+<section class="exercise"><div class="added-tag">Дополнительное упражнение V2</div><h4 class="h3">Collocations and verb patterns</h4>
+<p>Choose the correct option.</p><ol class="nums"><li>Good managers listen <strong>to / at</strong> feedback.</li><li>Biases may influence <strong>on the interpretation / the interpretation</strong> of a message.</li><li>Please tell <strong>me / to me</strong> about the problem.</li><li>Can you help <strong>me prepare / to me prepare</strong> the presentation?</li><li>She communicated <strong>with / to</strong> the client about the delay.</li><li>They sent <strong>the report to us / to us the report</strong>.</li></ol>
+</section>
+<section class="exercise"><div class="added-tag">Дополнительное упражнение V3</div><h4 class="h3">Professional communication scenarios</h4>
+<p>Complete each response using at least two target expressions: <em>make an effort, have difficulty, influence the form of a message, effective communication, social-psychological context, technical communication channel, nonverbal message, poor feedback</em>.</p>
+<ol class="nums"><li>A team member has misunderstood a short e-mail.</li><li>An international visitor does not understand a gesture.</li><li>An online meeting is disrupted by a bad connection.</li><li>A manager notices that employees do not ask questions after instructions.</li></ol>
+</section>
+<section class="exercise"><div class="added-tag">Дополнительное упражнение V4</div><h4 class="h3">Word families in context</h4>
+<p>Choose the correct derivative of the word in brackets.</p><ol class="nums"><li>Clear ______ reduces misunderstanding. (COMMUNICATE)</li><li>The lecturer gave a concise ______ of feedback. (DEFINE)</li><li>The report contains useful and ______ examples. (INFORM)</li><li>Body language can be highly ______ in a negotiation. (INFLUENCE)</li><li>She answered the question ______ and without hesitation. (ASSERT)</li><li>The company has ______ its internal communication procedures. (SPECIAL)</li></ol>
+</section>
+<h3 class="h2" id="grammar-extra"><span class="num">B.</span> Grammar consolidation</h3>
+<section class="exercise"><div class="added-tag">Дополнительное упражнение G1</div><h4 class="h3">Tense contrast: process, result, finished past</h4>
+<p>Put the verbs into the most appropriate form: Present Simple, Past Simple, Present Perfect or Present Perfect Continuous.</p>
+<ol class="nums"><li>Our team ______ (use) this platform since January, and we are still testing it.</li><li>Yesterday the manager ______ (send) the revised message to all participants.</li><li>Good feedback usually ______ (reduce) semantic noise.</li><li>She ______ already ______ (introduce) the new communication policy.</li><li>They ______ (interview) candidates all morning; they need a break.</li><li>We ______ (meet) the new client at a conference last year.</li></ol>
+</section>
+<section class="exercise"><div class="added-tag">Дополнительное упражнение G2</div><h4 class="h3">Stative verbs and Continuous forms</h4>
+<p>Decide whether the sentence is natural. Correct it where necessary.</p><ol class="nums"><li>The policy has been including several new channels since May.</li><li>We have been considering your proposal all week.</li><li>This job has been requiring excellent communication skills for years.</li><li>She has been interviewing candidates since nine o'clock.</li><li>The report has included a section on nonverbal communication since the last revision.</li></ol>
+</section>
+<section class="exercise"><div class="added-tag">Дополнительное упражнение G3</div><h4 class="h3">Articles in professional contexts</h4>
+<p>Insert <strong>a/an, the</strong> or <strong> – </strong>.</p><ol class="nums"><li>Feedback is ___ essential part of ___ communication process.</li><li>___ communication can fail when participants interpret ___ same message differently.</li><li>She works in ___ public relations and studies ___ psychology of persuasion.</li><li>We discussed ___ problem that appeared during yesterday's meeting.</li><li>He gave me ___ useful piece of advice about ___ body language.</li></ol>
+</section>
+<section class="exercise"><div class="added-tag">Дополнительное упражнение G4</div><h4 class="h3">Pronouns and reference</h4>
+<p>Replace the repeated nouns with appropriate personal or possessive forms without making the reference ambiguous.</p><ol class="nums"><li>The manager gave the manager's team the manager's feedback.</li><li>Anna spoke to Michael because Anna needed Michael's advice.</li><li>The company changed the company's policy after the company's clients complained.</li><li>Each student should explain the student's choice to the student's partner.</li></ol>
+</section>
+<section class="exercise"><div class="added-tag">Дополнительное упражнение G5</div><h4 class="h3">Plural forms and pronunciation</h4>
+<p>Form the plural and classify the ending as /s/, /z/ or /ɪz/: <strong>message, context, channel, source, strategy, effect, bias, relationship, language, participant</strong>.</p>
+</section>
+<section class="exercise"><div class="added-tag">Дополнительное упражнение G6</div><h4 class="h3">Integrated error correction</h4>
+<p>Correct the sentences. Each contains one or two errors typical for Russian-speaking learners.</p><ol class="nums"><li>She listens the client and influences on his decision.</li><li>I have met him yesterday at the communication seminar.</li><li>The feedbacks were very useful for our team.</li><li>He has been knowing the director for five years.</li><li>Our company sent to us an information about new channels.</li><li>They discussed about the problem between all members of the group.</li></ol>
+</section>
+</section>
+</article></main></div><button aria-label="Наверх" id="totop" title="Наверх">↑</button>
+<script>var NAVDATA=[{"level":1,"id":"содержание","text":"Содержание"},{"level":1,"id":"unit-overview","text":"Unit 1. Содержание и языковой фокус"},{"level":1,"id":"phonetics-articulation","text":"Фонетическая справка"},{"level":1,"id":"text-1-model-of-communication","text":"Text 1. Model of Communication"},{"level":1,"id":"language-study-text-1","text":"Language Study – Text 1"},{"level":2,"id":"vf-1-process","text":"Vocabulary Focus 1. Communication model"},{"level":2,"id":"vf-2-patterns","text":"Vocabulary Focus 2. Verb patterns"},{"level":2,"id":"vf-3-collocations","text":"Vocabulary Focus 3. Collocations"},{"level":2,"id":"vf-4-paraphrase","text":"Vocabulary Focus 4. Paraphrasing"},{"level":2,"id":"vf-5-wordfamilies","text":"Vocabulary Focus 5. Word families"},{"level":1,"id":"text-2-introductions","text":"Text 2. Introductions"},{"level":1,"id":"language-study-text-2","text":"Language Study – Text 2"},{"level":2,"id":"vf-6-family","text":"Vocabulary Focus 6. Family and background"},{"level":2,"id":"vf-7-introductions","text":"Vocabulary Focus 7. Introductions"},{"level":2,"id":"vf-8-register","text":"Vocabulary Focus 8. Register"},{"level":2,"id":"vf-9-recycle","text":"Vocabulary Focus 9. Unit recycling"},{"level":1,"id":"communication-studies","text":"Communication Studies"},{"level":2,"id":"intonation","text":"Интонация: нисходящая шкала"},{"level":1,"id":"additional-practice","text":"Дополнительная практика"},{"level":2,"id":"vocab-extra","text":"A. Vocabulary consolidation"},{"level":2,"id":"grammar-extra","text":"B. Grammar consolidation"}];</script>
+<script>
+(function(){
+  var body=document.body, nav=document.getElementById('nav');
+
+  /* ---------- оглавление ---------- */
+  var tocBox=document.getElementById('auto-toc');
+  if(tocBox){
+    NAVDATA.forEach(function(it){
+      var a=document.createElement('a');
+      a.href='#'+it.id; a.textContent=it.text; a.className='t'+it.level;
+      tocBox.appendChild(a);
+    });
+  }
+
+  /* ---------- боковая навигация ---------- */
+  NAVDATA.forEach(function(it){
+    var a=document.createElement('a');
+    a.href='#'+it.id; a.textContent=it.text; a.className='lvl'+it.level;
+    a.dataset.text=it.text.toLowerCase();
+    nav.appendChild(a);
+  });
+  var navLinks=Array.prototype.slice.call(nav.querySelectorAll('a'));
+
+  /* ---------- scrollspy ---------- */
+  var targets=navLinks.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));}).filter(Boolean);
+  var current=null;
+  function spy(){
+    var best=null,bestTop=-1e9;
+    for(var i=0;i<targets.length;i++){
+      var t=targets[i].getBoundingClientRect().top-100;
+      if(t<=0 && t>bestTop){bestTop=t;best=targets[i];}
+    }
+    if(best && best!==current){
+      current=best;
+      navLinks.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+best.id);});
+      var act=nav.querySelector('a.active');
+      if(act){
+        var r=act.getBoundingClientRect(), s=document.getElementById('sidebar').getBoundingClientRect();
+        if(r.top<s.top+20||r.bottom>s.bottom-20) act.scrollIntoView({block:'center'});
+      }
+    }
+  }
+
+  /* ---------- прогресс ---------- */
+  var bar=document.getElementById('progress'), totop=document.getElementById('totop');
+  function onScroll(){
+    var h=document.documentElement, max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(h.scrollTop/max*100):0)+'%';
+    totop.classList.toggle('on',h.scrollTop>600);
+    spy();
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){
+    if(!ticking){ticking=true;requestAnimationFrame(function(){onScroll();ticking=false;});}
+  },{passive:true});
+  onScroll();
+  totop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+
+  /* ---------- сворачивание блоков ---------- */
+  document.querySelectorAll('.box-head:not(.static)').forEach(function(h){
+    h.addEventListener('click',function(){
+      var box=h.parentElement, open=h.getAttribute('aria-expanded')==='true';
+      h.setAttribute('aria-expanded',open?'false':'true');
+      box.classList.toggle('collapsed',open);
+    });
+  });
+  function setAllBoxes(kind,collapsed){
+    document.querySelectorAll('.box[data-kind="'+kind+'"]').forEach(function(b){
+      b.classList.toggle('collapsed',collapsed);
+      b.querySelector('.box-head').setAttribute('aria-expanded',collapsed?'false':'true');
+    });
+  }
+/* ---------- тема ---------- */
+  var themeBtn=document.getElementById('t-theme');
+  themeBtn.addEventListener('click',function(){
+    var dark=document.documentElement.getAttribute('data-theme')==='dark';
+    document.documentElement.setAttribute('data-theme',dark?'light':'dark');
+    themeBtn.title=dark?'Тёмная тема':'Светлая тема';
+    themeBtn.setAttribute('aria-pressed',dark?'false':'true');
+  });
+
+  /* ---------- размер шрифта ---------- */
+  var sizes=[15,16,17,18,20], si=2;
+  document.getElementById('t-font').addEventListener('click',function(){
+    si=(si+1)%sizes.length;
+    document.documentElement.style.setProperty('--fs',sizes[si]+'px');
+  });
+
+  document.getElementById('t-print').addEventListener('click',function(){window.print();});
+
+  /* ---------- мобильное меню ---------- */
+  var sb=document.getElementById('sidebar');
+  document.getElementById('menu-btn').addEventListener('click',function(){sb.classList.toggle('open');});
+  nav.addEventListener('click',function(e){if(e.target.tagName==='A')sb.classList.remove('open');});
+
+  /* ---------- поиск ---------- */
+  var input=document.getElementById('q'), count=document.getElementById('qcount');
+  var article=document.getElementById('doc'), marks=[], mi=-1, timer=null;
+
+  function clearMarks(){
+    marks.forEach(function(m){
+      var p=m.parentNode; if(!p) return;
+      p.replaceChild(document.createTextNode(m.textContent),m); p.normalize();
+    });
+    marks=[]; mi=-1;
+  }
+  function walkText(root,fn){
+    var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        if(!n.nodeValue.trim())return NodeFilter.FILTER_REJECT;
+        var p=n.parentNode;
+        while(p&&p!==root){ if(p.tagName==='MARK'||p.tagName==='SCRIPT'||p.tagName==='STYLE')return NodeFilter.FILTER_REJECT; p=p.parentNode; }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodes=[],n; while((n=w.nextNode()))nodes.push(n);
+    nodes.forEach(fn);
+  }
+  function highlight(q){
+    clearMarks();
+    if(q.length<2){count.textContent='';navLinks.forEach(function(a){a.classList.remove('hidden');});return;}
+    var needle=q.toLowerCase();
+    walkText(article,function(node){
+      var hay=node.nodeValue.toLowerCase(), idx=hay.indexOf(needle);
+      if(idx<0)return;
+      var frag=document.createDocumentFragment(), rest=node.nodeValue, pos=0;
+      while(idx>=0){
+        frag.appendChild(document.createTextNode(rest.slice(pos,idx)));
+        var m=document.createElement('mark');
+        m.textContent=rest.slice(idx,idx+q.length);
+        frag.appendChild(m); marks.push(m);
+        pos=idx+q.length;
+        idx=hay.indexOf(needle,pos);
+      }
+      frag.appendChild(document.createTextNode(rest.slice(pos)));
+      node.parentNode.replaceChild(frag,node);
+    });
+    navLinks.forEach(function(a){a.classList.toggle('hidden',a.dataset.text.indexOf(needle)<0);});
+    count.textContent=marks.length?('1 / '+marks.length):'нет совпадений';
+    if(marks.length){mi=0;focusMark();}
+  }
+  function focusMark(){
+    marks.forEach(function(m){m.classList.remove('cur');});
+    if(mi<0||!marks[mi])return;
+    marks[mi].classList.add('cur');
+    marks[mi].scrollIntoView({block:'center',behavior:'smooth'});
+    count.textContent=(mi+1)+' / '+marks.length;
+  }
+  input.addEventListener('input',function(){
+    clearTimeout(timer);
+    var v=input.value.trim();
+    timer=setTimeout(function(){highlight(v);},220);
+  });
+  input.addEventListener('keydown',function(e){
+    if(e.key==='Enter'&&marks.length){e.preventDefault();mi=(mi+(e.shiftKey?-1:1)+marks.length)%marks.length;focusMark();}
+    if(e.key==='Escape'){input.value='';highlight('');input.blur();}
+  });
+
+  /* ---------- горячие клавиши ---------- */
+  document.addEventListener('keydown',function(e){
+    if(e.target.tagName==='INPUT')return;
+    if(e.key==='/'){e.preventDefault();input.focus();}
+    else if(e.key==='d'||e.key==='в'){document.getElementById('t-theme').click();}
+  });
+})();
+</script>
+</body></html>
